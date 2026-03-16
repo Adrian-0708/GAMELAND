@@ -1,0 +1,720 @@
+/* =========================================
+   VARIABLES Y RESETEO BÁSICO
+   ========================================= */
+:root {
+  --bg-dark: #0a0a0f;
+  --bg-card: #151520;
+  --bg-hover: #1f1f2e;
+  --text-main: #f0f0f5;
+  --text-muted: #a0a0b5;
+  --primary-color: #8a2be2; /* Púrpura gaming */
+  --primary-glow: rgba(138, 43, 226, 0.5);
+  --accent-color: #00ffd5; /* Cyan neón */
+
+  /* Colores de plataformas */
+  --color-pc: #00ffd5;
+  --color-ps: #006fce;
+  --color-xbox: #107c10;
+  --color-nintendo: #e60012;
+  --color-switch: #e60012;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* =========================================
+   ANIMACIONES (KEYFRAMES)
+   ========================================= */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseNeon {
+  0% {
+    box-shadow: 0 0 5px var(--primary-glow);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--primary-glow);
+  }
+  100% {
+    box-shadow: 0 0 5px var(--primary-glow);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Animación para el carrusel de imágenes (Sin zoom) */
+@keyframes fadeCarousel {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* =========================================
+   CABECERA Y NAVEGACIÓN
+   ========================================= */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background: rgba(10, 10, 15, 0.85);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.logo strong {
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+}
+
+.search-container {
+  display: flex;
+  background: var(--bg-card);
+  border-radius: 30px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  width: 40%;
+}
+
+.search-container:focus-within {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 15px var(--primary-glow);
+}
+
+.search-container input {
+  background: transparent;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  color: var(--text-main);
+  width: 100%;
+  outline: none;
+}
+
+.search-container button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0 1.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.search-container button:hover {
+  background: #9d4edd;
+}
+
+.user-navigation {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-weight: 600;
+}
+
+.user-navigation a {
+  transition: color 0.3s ease;
+}
+
+.user-navigation a:hover {
+  color: var(--accent-color);
+}
+
+.cart {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.cart-count {
+  background: var(--color-nintendo);
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 50%;
+  position: absolute;
+  top: -8px;
+  right: -12px;
+  font-weight: bold;
+}
+
+/* =========================================
+   SECCIÓN HERO (CARRUSEL DE FONDO Y BANNER)
+   ========================================= */
+.hero-section {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Contenedor del carrusel */
+.carousel-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Capa oscura encima de las imágenes */
+.carousel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(10, 10, 15, 0.5), var(--bg-dark));
+  z-index: 2;
+}
+
+/* Configuración de las diapositivas */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: fadeCarousel 25s infinite;
+}
+
+/* URLs de las imágenes del carrusel */
+.slide-1 {
+  background-image: url("https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop");
+  animation-delay: 0s;
+}
+.slide-2 {
+  background-image: url("https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2071&auto=format&fit=crop");
+  animation-delay: 5s;
+}
+.slide-3 {
+  background-image: url("https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=2070&auto=format&fit=crop");
+  animation-delay: 10s;
+}
+.slide-4 {
+  background-image: url("https://images.unsplash.com/photo-1605901309584-818e25960b8f?q=80&w=2019&auto=format&fit=crop");
+  animation-delay: 15s;
+}
+.slide-5 {
+  background-image: url("https://images.unsplash.com/photo-1493711662062-fa541abbe519?q=80&w=2070&auto=format&fit=crop");
+  animation-delay: 20s;
+}
+
+/* Contenido sobre el carrusel (textos y botones) */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 800px;
+  animation: fadeInUp 1s ease-out;
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: linear-gradient(45deg, var(--primary-color), #b100e8);
+  color: white;
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 10px 20px rgba(138, 43, 226, 0.4);
+  transition: all 0.3s ease;
+  animation: pulseNeon 3s infinite;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 25px rgba(138, 43, 226, 0.6);
+}
+
+/* =========================================
+   CATEGORÍAS POPULARES (EFECTO ACORDEÓN)
+   ========================================= */
+.categories-section,
+.offers-section {
+  padding: 4rem 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 50%;
+  height: 4px;
+  background: var(--primary-color);
+  border-radius: 2px;
+}
+
+/* Contenedor principal del acordeón */
+.categories-accordion {
+  display: flex;
+  width: 100%;
+  height: 300px;
+  gap: 15px;
+}
+
+/* Cada tarjeta del acordeón */
+.accordion-item {
+  flex: 1;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  transition: flex 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Al pasar el ratón, esta tarjeta crece (flex: 4) y las demás se encogen */
+.accordion-item:hover {
+  flex: 4;
+}
+
+/* Fondos degradados para cada categoría */
+.item-pc {
+  background: linear-gradient(to bottom, #052b2b, #001f1f);
+}
+.item-ps {
+  background: linear-gradient(to bottom, #002244, #001224);
+}
+.item-xbox {
+  background: linear-gradient(to bottom, #053305, #021a02);
+}
+.item-nintendo {
+  background: linear-gradient(to bottom, #4a0006, #240003);
+}
+
+/* Capa oscura para cuando no están seleccionadas */
+.accordion-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  transition: background 0.6s ease;
+}
+
+.accordion-item:hover::before {
+  background: transparent;
+}
+
+/* Contenido interno (icono y texto) */
+.accordion-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.accordion-content span {
+  font-size: 3rem;
+  transition: transform 0.4s ease;
+}
+
+/* El texto está oculto por defecto */
+.accordion-content h3 {
+  font-size: 1.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+/* Al hacer hover, mostramos el texto y movemos el icono */
+.accordion-item:hover .accordion-content span {
+  transform: scale(1.2) translateY(-10px);
+}
+
+.accordion-item:hover .accordion-content h3 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Resplandores para los iconos */
+.item-pc span {
+  text-shadow: 0 0 15px var(--color-pc);
+}
+.item-ps span {
+  text-shadow: 0 0 15px var(--color-ps);
+}
+.item-xbox span {
+  text-shadow: 0 0 15px var(--color-xbox);
+}
+.item-nintendo span {
+  text-shadow: 0 0 15px var(--color-nintendo);
+}
+
+/* =========================================
+   OFERTAS DESTACADAS (GRID DE JUEGOS)
+   ========================================= */
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.game-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  overflow: visible; /* Cambiado a visible para que la tooltip pueda salir */
+  position: relative;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.game-card:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 15px 30px rgba(0, 0, 0, 0.6),
+    0 0 15px rgba(138, 43, 226, 0.2);
+  border-color: rgba(138, 43, 226, 0.5);
+  z-index: 50; /* Para asegurar que la tooltip quede por encima del resto */
+}
+
+/* Imágenes o fondos de las portadas */
+.game-image {
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s ease;
+  border-radius: 16px 16px 0 0;
+  overflow: hidden; /* Mantener la imagen dentro de los bordes redondeados */
+}
+
+.game-card:hover .game-image {
+  transform: scale(1.03);
+}
+
+.bg-gow {
+  background: linear-gradient(to bottom, #ff416c, #ff4b2b);
+}
+.dark-bg {
+  background: linear-gradient(to bottom, #232526, #414345);
+}
+
+.cover-title {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Etiquetas de descuentos y plataformas */
+.discount-tag {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: var(--color-nintendo);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-weight: 900;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 10px rgba(230, 0, 18, 0.4);
+  z-index: 2;
+}
+
+.platform-tag {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Información de precios inferior */
+.game-info {
+  padding: 1.5rem;
+  background: var(--bg-card);
+  position: relative;
+  z-index: 3;
+  border-radius: 0 0 16px 16px;
+}
+
+.game-info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #fff;
+}
+
+.pricing {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.price-old del {
+  color: var(--text-muted);
+  font-size: 1rem;
+  text-decoration-color: var(--color-nintendo);
+  text-decoration-thickness: 2px;
+}
+
+.price-current {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--accent-color);
+  text-shadow: 0 0 10px rgba(0, 255, 213, 0.3);
+}
+
+/* =========================================
+   VENTANITA FLOTANTE (TOOLTIP DE JUEGOS)
+   ========================================= */
+/* La caja oculta por defecto */
+.game-tooltip {
+  position: absolute;
+  bottom: calc(100% + 15px); /* Se posiciona justo encima de la tarjeta */
+  left: 50%;
+  transform: translateX(-50%) translateY(10px) scale(0.95);
+  width: 280px;
+  background: rgba(15, 15, 25, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--primary-color);
+  border-radius: 12px;
+  padding: 1.2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 100;
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.8),
+    0 0 15px rgba(138, 43, 226, 0.3);
+  pointer-events: none; /* Evita que el ratón interfiera con la animación */
+}
+
+/* El "piquito" o flecha que apunta hacia la tarjeta */
+.game-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 10px;
+  border-style: solid;
+  border-color: var(--primary-color) transparent transparent transparent;
+}
+
+/* Animación: Mostrar la ventanita al hacer hover en la tarjeta */
+.game-card:hover .game-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+/* Textos dentro de la ventanita */
+.tooltip-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5rem;
+}
+
+.tooltip-header h4 {
+  font-size: 1.1rem;
+  color: var(--accent-color);
+  line-height: 1.2;
+}
+
+.tooltip-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  line-height: 1.4;
+  white-space: normal;
+}
+
+.tooltip-price {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #fff;
+  text-align: right;
+}
+
+/* Estilos de las etiquetas PEGI */
+.pegi {
+  font-weight: 900;
+  font-size: 0.85rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  min-width: 28px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+/* Colores oficiales PEGI */
+.pegi-3,
+.pegi-7 {
+  background: #54b948;
+  color: white;
+} /* Verde */
+.pegi-12,
+.pegi-16 {
+  background: #f39c12;
+  color: white;
+} /* Naranja */
+.pegi-18 {
+  background: #e60012;
+  color: white;
+} /* Rojo */
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.main-footer {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: #050508;
+  color: var(--text-muted);
+  margin-top: 4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVE DESIGN)
+   ========================================= */
+@media (max-width: 768px) {
+  .main-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .search-container {
+    width: 100%;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  /* El acordeón se apila verticalmente en móviles */
+  .categories-accordion {
+    flex-direction: column;
+    height: 600px;
+  }
+}

@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GAMELAND</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="logo">
+        <strong>GAMELAND</strong>
+      </div>
+
+      <div class="search-container">
+        <input type="text" placeholder="Buscar juegos divertidos..." />
+        <button type="button">Buscar</button>
+      </div>
+
+      <nav class="user-navigation">
+        <a href="#">Tienda</a>
+        <a href="#" class="cart">
+          <span class="icon-cart">🛒</span>
+          <span class="cart-count">0</span>
+        </a>
+        <a href="#">Login</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero-section">
+        <div class="carousel-bg">
+          <div class="slide slide-1"></div>
+          <div class="slide slide-2"></div>
+          <div class="slide slide-3"></div>
+          <div class="slide slide-4"></div>
+          <div class="slide slide-5"></div>
+          <div class="carousel-overlay"></div>
+        </div>
+
+        <div class="hero-content">
+          <h1>Descubre tu próxima aventura</h1>
+          <p>
+            Miles de juegos para PC, PlayStation, Xbox y Nintendo a precios
+            increíbles.
+          </p>
+          <a href="#" class="btn-primary">Explorar Tienda &rarr;</a>
+        </div>
+      </section>
+
+      <section class="categories-section">
+        <h2>Categorías Populares</h2>
+        <div class="categories-accordion">
+          <a href="#" class="accordion-item item-pc">
+            <div class="accordion-content">
+              <span class="icon">🎮</span>
+              <h3>PC Games</h3>
+            </div>
+          </a>
+          <a href="#" class="accordion-item item-ps">
+            <div class="accordion-content">
+              <span class="dot">🔵</span>
+              <h3>PlayStation</h3>
+            </div>
+          </a>
+          <a href="#" class="accordion-item item-xbox">
+            <div class="accordion-content">
+              <span class="dot">🟢</span>
+              <h3>Xbox</h3>
+            </div>
+          </a>
+          <a href="#" class="accordion-item item-nintendo">
+            <div class="accordion-content">
+              <span class="dot">🔴</span>
+              <h3>Nintendo</h3>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="offers-section">
+        <h2>Ofertas Destacadas</h2>
+        <div class="offers-grid">
+          <article class="game-card">
+            <div class="game-tooltip">
+              <div class="tooltip-header">
+                <span class="pegi pegi-7">7</span>
+                <h4>Super Mario Bros. Wonder</h4>
+              </div>
+              <p class="tooltip-desc">
+                Acompaña a Mario y sus amigos en una aventura en 2D llena de
+                sorpresas, transformaciones y maravillas inesperadas.
+              </p>
+              <div class="tooltip-price">59.99€</div>
+            </div>
+
+            <div class="game-image bg-gow">
+              <span class="platform-tag">SWITCH</span>
+            </div>
+            <div class="game-info">
+              <h3>Super Mario Bros. Wonder</h3>
+              <div class="pricing">
+                <span class="price-current">59.99€</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="game-card">
+            <div class="game-tooltip">
+              <div class="tooltip-header">
+                <span class="pegi pegi-3">3</span>
+                <h4>Forza Horizon 5</h4>
+              </div>
+              <p class="tooltip-desc">
+                Explora los vibrantes y cambiantes paisajes de mundo abierto de
+                México con una acción de conducción ilimitada y divertida.
+              </p>
+              <div class="tooltip-price">33.99€</div>
+            </div>
+
+            <div class="game-image dark-bg">
+              <span class="discount-tag">-15%</span>
+              <span class="platform-tag">XBOX</span>
+              <h4 class="cover-title">Forza Horizon 5</h4>
+            </div>
+            <div class="game-info">
+              <h3>Forza Horizon 5</h3>
+              <div class="pricing">
+                <span class="price-old"><del>39.99€</del></span>
+                <span class="price-current">33.99€</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="game-card">
+            <div class="game-tooltip">
+              <div class="tooltip-header">
+                <span class="pegi pegi-18">18</span>
+                <h4>Cyberpunk 2077</h4>
+              </div>
+              <p class="tooltip-desc">
+                Una aventura de acción y mundo abierto RPG ambientada en Night
+                City, una megalópolis obsesionada con el poder y el glamur.
+              </p>
+              <div class="tooltip-price">14.99€</div>
+            </div>
+
+            <div class="game-image dark-bg">
+              <span class="discount-tag">-50%</span>
+              <span class="platform-tag">PC</span>
+              <h4 class="cover-title">Cyberpunk 2077</h4>
+            </div>
+            <div class="game-info">
+              <h3>Cyberpunk 2077</h3>
+              <div class="pricing">
+                <span class="price-old"><del>29.99€</del></span>
+                <span class="price-current">14.99€</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="game-card">
+            <div class="game-tooltip">
+              <div class="tooltip-header">
+                <span class="pegi pegi-16">16</span>
+                <h4>Elden Ring</h4>
+              </div>
+              <p class="tooltip-desc">
+                Levántate, Sinluz, y déjate guiar por la gracia para esgrimir el
+                poder del Círculo de Elden y convertirte en el Señor de Elden.
+              </p>
+              <div class="tooltip-price">56.99€</div>
+            </div>
+
+            <div class="game-image dark-bg">
+              <span class="discount-tag">-5%</span>
+              <span class="platform-tag">PC</span>
+              <h4 class="cover-title">Elden Ring</h4>
+            </div>
+            <div class="game-info">
+              <h3>Elden Ring</h3>
+              <div class="pricing">
+                <span class="price-old"><del>59.99€</del></span>
+                <span class="price-current">56.99€</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="main-footer">
+      <p>&copy; 2026 GAMELAND. Proyecto final LM.</p>
+    </footer>
+  </body>
+</html>
