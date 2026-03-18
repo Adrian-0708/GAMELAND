@@ -1,0 +1,668 @@
+/* =========================================
+   VARIABLES Y RESETEO (NEO-BRUTALISMO LIMPIO)
+   ========================================= */
+:root {
+  --bg-main: #ffffff;
+  --text-main: #000000;
+  --border-color: #000000;
+
+  /* Colores primarios saturados */
+  --accent-yellow: #ffe600;
+  --accent-pink: #ff0066;
+  --accent-blue: #0055ff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial Black", Impact, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.5;
+  overflow-x: hidden;
+
+  /* Fondo estilo cuadrícula de papel milimetrado suave */
+  background-image:
+    linear-gradient(#e0e0e0 2px, transparent 2px),
+    linear-gradient(90deg, #e0e0e0 2px, transparent 2px);
+  background-size: 40px 40px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* =========================================
+   KEYFRAMES (ANIMACIONES SUAVES)
+   ========================================= */
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes floatHero {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes jiggle {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-1px, 1px);
+  }
+  50% {
+    transform: translate(1px, -1px);
+  }
+  75% {
+    transform: translate(-1px, -1px);
+  }
+}
+
+@keyframes colorCycleText {
+  0% {
+    color: var(--accent-pink);
+  }
+  50% {
+    color: var(--accent-blue);
+  }
+  100% {
+    color: var(--accent-pink);
+  }
+}
+
+/* Animación para el carrusel de fondo */
+@keyframes brutalFade {
+  0% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  5% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  25% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* =========================================
+   CABECERA Y NAVEGACIÓN
+   ========================================= */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 5%;
+  background: #ffffff;
+  border: 6px solid var(--border-color);
+  box-shadow: 12px 12px 0 rgba(0, 0, 0, 1);
+  position: relative;
+  z-index: 1000;
+  margin-bottom: 2rem;
+  animation: popIn 0.5s ease-out;
+}
+
+.logo strong {
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--text-main);
+  letter-spacing: -1px;
+  animation: colorCycleText 4s linear infinite;
+}
+
+.search-container {
+  display: flex;
+  width: 40%;
+  border: 4px solid var(--border-color);
+  background: #fff;
+  box-shadow: 6px 6px 0 var(--border-color);
+  transition: all 0.2s ease;
+  animation: popIn 0.5s ease-out 0.2s both;
+}
+
+.search-container:focus-within {
+  transform: translate(-4px, -4px);
+  box-shadow: 10px 10px 0 var(--accent-blue);
+}
+
+.search-container input {
+  background: transparent;
+  border: none;
+  padding: 1rem;
+  font-family: monospace;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--text-main);
+  width: 100%;
+  outline: none;
+}
+
+.search-container button {
+  background: var(--accent-yellow);
+  color: var(--text-main);
+  border: none;
+  border-left: 4px solid var(--border-color);
+  padding: 0 1.5rem;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 1rem;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.search-container button:hover {
+  background: var(--accent-blue);
+  color: white;
+}
+
+.user-navigation {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-weight: 900;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  animation: popIn 0.5s ease-out 0.4s both;
+}
+
+.user-navigation a {
+  padding: 0.5rem 1rem;
+  border: 4px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.user-navigation a:hover {
+  background: var(--accent-yellow);
+  border: 4px solid var(--border-color);
+  box-shadow: 4px 4px 0 var(--border-color);
+  transform: translateY(-4px);
+}
+
+.cart {
+  position: relative;
+}
+
+.cart-count {
+  background: var(--accent-pink);
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border: 2px solid var(--border-color);
+  position: absolute;
+  top: -15px;
+  right: -20px;
+}
+
+/* =========================================
+   SECCIÓN HERO (CARRUSEL RECUPERADO)
+   ========================================= */
+.hero-section {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+  background: var(--accent-yellow);
+  border: 6px solid var(--border-color);
+  margin: 0 5%;
+  box-shadow: 15px 15px 0 var(--border-color);
+  overflow: hidden; /* Oculta lo que sobresale de las imágenes */
+}
+
+/* Reactivamos el carrusel original, pero con filtro oscuro */
+.carousel-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.carousel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Capa oscura para que lea bien el texto */
+  z-index: 2;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: brutalFade 25s infinite;
+}
+
+/* URLs de las imágenes (las mismas del HTML) */
+.slide-1 {
+  background-image: url("https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop");
+  animation-delay: 0s;
+}
+.slide-2 {
+  background-image: url("https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2071&auto=format&fit=crop");
+  animation-delay: 5s;
+}
+.slide-3 {
+  background-image: url("https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=2070&auto=format&fit=crop");
+  animation-delay: 10s;
+}
+.slide-4 {
+  background-image: url("https://images.unsplash.com/photo-1605901309584-818e25960b8f?q=80&w=2019&auto=format&fit=crop");
+  animation-delay: 15s;
+}
+.slide-5 {
+  background-image: url("https://images.unsplash.com/photo-1493711662062-fa541abbe519?q=80&w=2070&auto=format&fit=crop");
+  animation-delay: 20s;
+}
+
+/* El cuadro de texto sobre el carrusel */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 800px;
+  background: #ffffff;
+  padding: 3rem;
+  border: 6px solid var(--border-color);
+  box-shadow: 10px 10px 0 var(--accent-pink);
+
+  /* Entrada + Animación de flotar constantemente */
+  animation:
+    popIn 0.6s ease-out 0.2s both,
+    floatHero 4s ease-in-out 0.8s infinite alternate;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.hero-content p {
+  font-family: monospace;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 2.5rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--accent-blue);
+  color: white;
+  padding: 1rem 3rem;
+  font-size: 1.5rem;
+  border: 4px solid var(--border-color);
+  box-shadow: 8px 8px 0 var(--border-color);
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:active {
+  transform: translate(4px, 4px);
+  box-shadow: 4px 4px 0 var(--border-color);
+}
+
+.btn-primary:hover {
+  transform: translateY(-5px);
+  box-shadow: 12px 12px 0 var(--accent-pink);
+}
+
+/* =========================================
+   CATEGORÍAS
+   ========================================= */
+.categories-section,
+.offers-section {
+  padding: 4rem 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  text-shadow: 3px 3px 0 var(--accent-yellow);
+  -webkit-text-stroke: 1px var(--border-color);
+}
+
+.categories-accordion {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.accordion-item {
+  background: #ffffff;
+  border: 4px solid var(--border-color);
+  box-shadow: 8px 8px 0 var(--border-color);
+  padding: 2rem 1rem;
+  text-align: center;
+  transition: all 0.2s ease;
+  animation:
+    jiggle 4s ease-in-out infinite,
+    popIn 0.5s ease-out both;
+}
+
+.categories-accordion a:nth-child(1) {
+  animation-delay: 0.1s, 0.1s;
+}
+.categories-accordion a:nth-child(2) {
+  animation-delay: 0.2s, 0.2s;
+}
+.categories-accordion a:nth-child(3) {
+  animation-delay: 0.3s, 0.3s;
+}
+.categories-accordion a:nth-child(4) {
+  animation-delay: 0.4s, 0.4s;
+}
+
+.accordion-item:hover {
+  transform: translate(-5px, -5px);
+  box-shadow: 13px 13px 0 var(--accent-pink);
+  animation-play-state: paused;
+}
+
+.accordion-item::before {
+  display: none;
+}
+
+.accordion-content {
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.accordion-content span {
+  font-size: 4rem;
+  text-shadow: none;
+}
+.accordion-content h3 {
+  font-size: 1.8rem;
+  color: var(--text-main);
+  text-transform: uppercase;
+}
+
+/* =========================================
+   OFERTAS DESTACADAS
+   ========================================= */
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 3rem;
+}
+
+.game-card {
+  background: #ffffff;
+  border: 4px solid var(--border-color);
+  position: relative;
+  box-shadow: 12px 12px 0 var(--border-color);
+  transition: all 0.2s ease;
+  overflow: hidden;
+  animation: popIn 0.5s ease-out both;
+}
+
+.offers-grid article:nth-child(1) {
+  animation-delay: 0.5s;
+}
+.offers-grid article:nth-child(2) {
+  animation-delay: 0.6s;
+}
+.offers-grid article:nth-child(3) {
+  animation-delay: 0.7s;
+}
+.offers-grid article:nth-child(4) {
+  animation-delay: 0.8s;
+}
+
+.game-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 16px 16px 0 var(--accent-blue);
+}
+
+.game-image {
+  height: 250px;
+  background-blend-mode: multiply;
+  background-color: #e0e0e0;
+  filter: grayscale(100%) contrast(150%);
+  border-bottom: 4px solid var(--border-color);
+  position: relative;
+}
+
+/* Etiquetas fijas, se mueven solo al hacer hover */
+.discount-tag {
+  position: absolute;
+  top: 10px;
+  left: -10px;
+  background: var(--accent-pink);
+  color: white;
+  padding: 0.5rem 1rem;
+  border: 3px solid var(--border-color);
+  font-size: 1.2rem;
+  transform: rotate(-5deg);
+  box-shadow: 4px 4px 0 var(--border-color);
+  z-index: 2;
+  transition: transform 0.2s ease;
+}
+
+.discount-tag:hover {
+  transform: rotate(0deg) scale(1.1);
+}
+
+.platform-tag {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: var(--accent-yellow);
+  color: var(--text-main);
+  padding: 0.3rem 0.8rem;
+  border: 3px solid var(--border-color);
+  font-size: 1rem;
+  box-shadow: 4px 4px 0 var(--border-color);
+  z-index: 2;
+  transition: transform 0.2s ease;
+}
+
+.platform-tag:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+
+.cover-title {
+  display: none;
+}
+
+.game-info {
+  padding: 1.5rem;
+  background: #ffffff;
+}
+
+.game-info h3 {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
+
+.pricing {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 2px dashed var(--border-color);
+  padding-top: 1rem;
+}
+
+.price-old del {
+  color: #666;
+  font-family: monospace;
+  font-size: 1.2rem;
+}
+
+.price-current {
+  font-size: 2rem;
+  color: var(--accent-pink);
+  text-shadow: 2px 2px 0 var(--border-color);
+}
+
+/* =========================================
+   TOOLTIP Y ETIQUETAS PEGI
+   ========================================= */
+.game-tooltip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--accent-yellow);
+  padding: 2rem;
+  transform: scale(0);
+  transition: all 0.2s ease-out;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+}
+
+.game-tooltip::after {
+  display: none;
+}
+
+.game-card:hover .game-tooltip {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.tooltip-header h4 {
+  font-size: 1.5rem;
+  color: var(--text-main);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.tooltip-desc {
+  font-family: monospace;
+  font-size: 1rem;
+  color: var(--text-main);
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.tooltip-price {
+  font-size: 2.5rem;
+  color: var(--accent-blue);
+  text-shadow: 2px 2px 0 var(--border-color);
+}
+
+/* Configuración PEGI - Colores Oficiales y Símbolo '+' */
+.pegi {
+  font-weight: 900;
+  font-size: 1.2rem;
+  padding: 0.2rem 0.6rem;
+  border: 3px solid var(--border-color);
+  box-shadow: 3px 3px 0 var(--border-color);
+  display: inline-block;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.pegi::after {
+  content: "+"; /* Añade el signo más automáticamente */
+}
+
+/* Asignación de colores por edad */
+.pegi-3,
+.pegi-7 {
+  background: #54b948;
+} /* Verde */
+.pegi-12,
+.pegi-16 {
+  background: #f39c12;
+} /* Naranja */
+.pegi-18 {
+  background: #e60012;
+} /* Rojo */
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.main-footer {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: var(--border-color);
+  color: white;
+  font-family: monospace;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  border-top: 12px solid var(--accent-pink);
+  margin-top: 4rem;
+}
+
+/* =========================================
+   RESPONSIVO
+   ========================================= */
+@media (max-width: 900px) {
+  .categories-accordion {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .main-header {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .search-container {
+    width: 100%;
+  }
+  .hero-section {
+    margin: 0;
+    border-left: none;
+    border-right: none;
+  }
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .categories-accordion {
+    grid-template-columns: 1fr;
+  }
+}
